@@ -1,0 +1,39 @@
+html, body {
+  font-family: 'helvetica neue', helvetica, sans-serif;
+}
+
+.navigables {
+  font-family: Consolas, monaco, monospace;
+  font-size: 0.75rem;
+  height: 100vh;
+  margin-top: 0.7rem;
+  overflow: auto;
+
+  ul {
+    display: inline-block;
+    width: 100%;
+  }
+
+  li {
+    display: inline-flex;
+    width: 100%;
+
+    &:hover, &.is-selected {
+      background-color: black;
+    }
+
+    a, a:visited, a:active, a:hover {
+      color: black;
+      text-decoration: none;
+      padding: 0.35rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}

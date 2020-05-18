@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="setDreamURI(id)" class="navigables--list-item">{{ label }}</nuxt-link>
+  <nuxt-link :to="setDreamURI(id)" class="navigables--list-item">{{ paddedID }} | {{ label }}</nuxt-link>
 </template>
 
 <script>
@@ -21,14 +21,12 @@ export default {
     setDreamURI(id) {
       return `/dreams/${id}`;
     }
+  },
+
+  computed: {
+    paddedID() {
+      return `${this.id < 100 ? '0' : ''}${this.id < 10 ? '0' : '' }${this.id}`;
+    }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.navigables--list-item {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-</style>

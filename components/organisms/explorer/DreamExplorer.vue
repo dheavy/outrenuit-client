@@ -3,11 +3,8 @@
     <div class="column is-narrow" style="background: pink; width: 100px">
       Triggers
     </div>
-    <div class="column navigables--dreams-list">
-      <dreams-list
-        v-if="dreams"
-        :dreams="dreams"
-      />
+    <div class="column is-paddingless navigables">
+      <dreams-list v-if="dreams" :dreams="dreams" />
     </div>
     <div class="column is-three-fifths" style="background: yellow">
       Core
@@ -47,11 +44,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.navigables--dreams-list {
-  background-color: cyan;
-  height: 100vh;
-  overflow: auto;
-}
-</style>
