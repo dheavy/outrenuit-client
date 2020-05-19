@@ -1,18 +1,19 @@
 const state = () => {
   return {
-    currentDreamID: null
+    currentDream: null,
+
   };
 };
 
 const mutations = {
-  setCurrentDreamID(state, dreamID) {
-    state.currentDreamID = dreamID;
+  setCurrentDream(state, dream) {
+    state.currentDream = dream;
   }
 };
 
 const actions = {
-  changeCurrentDream({commit}, dreamID) {
-    commit('setCurrentDreamID', dreamID);
+  changeCurrentDream({commit}, dream) {
+    commit('setCurrentDream', dream);
   }
 }
 

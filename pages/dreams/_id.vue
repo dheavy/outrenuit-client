@@ -4,7 +4,7 @@
 
 <script>
 import {loadDreams} from '~/api';
-import DreamExplorer from '~/components/organisms/explorer/DreamExplorer';
+import DreamExplorer from '~/components/organisms/DreamExplorer';
 
 export default {
   name: 'PagesIndex',
@@ -12,7 +12,6 @@ export default {
   components: {DreamExplorer},
 
   async asyncData({store}) {
-    if (store.state.dreams) return;
     const dreams = await loadDreams();
     store.commit('data/init', dreams);
   }

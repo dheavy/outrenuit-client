@@ -1,0 +1,7 @@
+@mixin monospace() {
+  font-family: Consolas, monaco, monospace;
+}
+
+@mixin border {
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+}
