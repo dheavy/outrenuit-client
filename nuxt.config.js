@@ -5,11 +5,11 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'O U T R E N U I T :: Datascape and exploring tools for dreams and psychedelic journeys',
+    title: 'O U T R E N U I T :: Datascape et outil exploratoire de rêves, songes et voyages en état modifié de conscience',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Datascape and exploring tools for dreams and psychedelic journeys' }
+      { hid: 'description', name: 'description', content: 'Datascape et outil exploratoire de rêves, songes et voyages en état modifié de conscience' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

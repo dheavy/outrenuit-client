@@ -1,5 +1,10 @@
 <template>
-  <nuxt-link :to="setDreamURI(id)" class="navigables--list-item">{{ paddedID }} | {{ label }}</nuxt-link>
+  <nuxt-link
+    :to="setDreamURI(id)"
+    class="navigables--list-item"
+  >
+    {{ paddedID }} | {{ label }}
+  </nuxt-link>
 </template>
 
 <script>

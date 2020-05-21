@@ -4,7 +4,7 @@
       <burger-btn />
     </div>
     <div class="column is-paddingless navigables">
-      <dreams-list v-if="dreams" :dreams="dreams" />
+      <dreams-list v-if="dreams" :dreams="dreams" :search-results="searchResults" />
     </div>
     <div class="column is-two-thirds core">
       <explorer-core v-if="dreams" :dream="currentDream" />
@@ -45,8 +45,12 @@ export default {
   computed: {
     ...mapState({
       dreams: state => state.data.dreams,
-      currentDream: state => state.explorer.currentDream
-    })
+      currentDream: state => state.explorer.currentDream,
+      dreamSearchResults: state => state.explorer.searchResults
+    }),
+    searchResults() {
+      return this.dreamSearchResults ? this.dreamSearchResults : this.dreams;
+    }
   }
 }
 </script>
