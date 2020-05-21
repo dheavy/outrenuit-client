@@ -2,18 +2,16 @@
   <section>
     <nav class="dreams-list--search">
       <div class="control">
-        <input
-          class="input"
-          type="search"
-          placeholder="Recherche"
-          aria-label="Rechercher dans le corpus de rêves"
-          @input="onSearchInput"
-        />
+        <search-box :on-input="onSearchInput" />
       </div>
     </nav>
-    <ul class="dreams-list" v-if="dreams">
-      <li v-for="(dream, i) in displayedDreams" :key="i">
-        <navigables-list-item :label="dream.text" :id="i" />
+    <ul class="dreams-list" v-if="dreams" @scroll="scrollHandler" ref="list">
+      <li
+        v-for="(dream, i) in displayedDreams"
+        :class="{'is-selected': isItemSelected(dream)}"
+        :key="i"
+      >
+        <navigables-list-item :label="dream.text" :id="dream.uid" />
       </li>
     </ul>
   </section>
@@ -22,11 +20,15 @@
 <script>
 import {mapActions} from 'vuex';
 import NavigablesListItem from '~/components/atoms/navigables/NavigablesListItem';
+import SearchBox from '~/components/atoms/navigables/SearchBox';
 
 export default {
   name: 'DreamsList',
 
-  components: {NavigablesListItem},
+  components: {
+    NavigablesListItem,
+    SearchBox
+  },
 
   props: {
     dreams: {
@@ -36,6 +38,14 @@ export default {
     searchResults: {
       type: Array,
       default: () => []
+    },
+    onScroll: {
+      type: Function,
+      default: () => {}
+    },
+    currentDreamUid: {
+      type: String,
+      default: ''
     }
   },
 
@@ -47,9 +57,26 @@ export default {
 
   methods: {
     ...mapActions('explorer', ['searchDreams']),
+
     onSearchInput(e) {
       const pattern = e.target.value;
       this.searchDreams({list: this.dreams, pattern});
+    },
+
+    scrollHandler(e) {
+      if (this.$refs.list) {
+        this.onScroll(this.$refs.list.scrollTop);
+      }
+    },
+
+    setScrollPosition(amount) {
+      if (this.$refs.list) {
+        this.$refs.list.scrollTop = amount;
+      }
+    },
+
+    isItemSelected(dream) {
+      return dream.uid === this.currentDreamUid;
     }
   }
 }
@@ -57,15 +84,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/_mixins';
+@import '~/assets/_variables';
 
-input {
-  @include monospace();
+@include navigables-list();
+
+.dreams-list--search {
+  height: $searchbox-height;
 }
 
-.input {
-  box-shadow: none;
-  border: none;
-  padding-left: 1rem;
-  margin-bottom: 1rem;
+.dreams-list {
+  height: calc(100vh - #{$searchbox-height});
+  overflow: auto;
 }
 </style>

@@ -2,6 +2,40 @@
   font-family: Consolas, monaco, monospace;
 }
 
-@mixin border {
+@mixin border() {
   border-left: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+@mixin navigables-list() {
+  ul {
+    display: inline-block;
+    width: 100%;
+
+    li {
+      display: inline-flex;
+      width: 100%;
+
+      &:hover, &.is-selected {
+        background-color: black;
+      }
+
+      a, a:visited, a:active, a:hover {
+        color: black;
+        text-decoration: none;
+        padding: 0.35rem 1rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        display: block;
+
+        &:hover {
+          color: white;
+        }
+      }
+
+      &.is-selected a {
+        color: white;
+      }
+    }
+  }
 }

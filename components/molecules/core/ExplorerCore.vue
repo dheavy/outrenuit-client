@@ -46,6 +46,7 @@ export default {
   .dream--meta {
     @include monospace();
     font-size: 0.75rem;
+    margin-top: 0.3rem;
     margin-bottom: 2rem;
     text-transform: capitalize;
   }

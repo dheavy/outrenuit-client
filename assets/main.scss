@@ -14,44 +14,8 @@ html, body {
   padding: 0;
 }
 
-.navigables {
-  @include monospace();
-  @include border();
-  font-size: 0.75rem;
-  height: 100vh;
-  overflow: auto;
-
-  ul {
-    display: inline-block;
-    width: 100%;
-  }
-
-  li {
-    display: inline-flex;
-    width: 100%;
-
-    &:hover, &.is-selected {
-      background-color: black;
-    }
-
-    a, a:visited, a:active, a:hover {
-      color: black;
-      text-decoration: none;
-      padding: 0.35rem 1rem;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      display: block;
-
-      &:hover {
-        color: white;
-      }
-    }
-  }
-}
-
 .core {
-  padding: 1rem 0;
+  padding: 0 1rem;
   overflow: auto;
   @include border();
 }

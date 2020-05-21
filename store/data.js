@@ -6,6 +6,9 @@ const state = () => {
 
 const mutations = {
   init(state, dreams) {
+    dreams.forEach((dream, i) => {
+      dream.uid = i;
+    });
     state.dreams = dreams;
   }
 };
